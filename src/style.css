@@ -1256,22 +1256,24 @@ header h1 {
    ph-flicker, ph-off, ph-huh, ph-leave, ph-bye, ph-iris. Positions inside
    .raf are picture pixels (1024 × 994). */
 #scene-party { max-width: 460px; }
-.party-art { max-width: min(440px, calc((100dvh - 48px) * 300 / 450)); overflow: hidden; transform-origin: 66.7% 52%; transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1); }
+.party-art { max-width: min(440px, calc((100dvh - 48px) * 300 / 494)); overflow: hidden; transform-origin: 66.7% 56%; transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1); }
 /* lasers and confetti while the party is on */
 .laser { opacity: 0.85; }
-.la1 { transform-origin: 0 0; animation: laserL 1.9s ease-in-out infinite alternate; }
-.la2 { transform-origin: 0 0; animation: laserL 1.3s ease-in-out -0.6s infinite alternate; }
-.la3 { transform-origin: 300px 0; animation: laserR 1.7s ease-in-out infinite alternate; }
-.la4 { transform-origin: 300px 0; animation: laserR 1.1s ease-in-out -0.4s infinite alternate; }
+.la1 { transform-origin: 0 -44px; animation: laserL 1.9s ease-in-out infinite alternate; }
+.la2 { transform-origin: 0 -44px; animation: laserL 1.3s ease-in-out -0.6s infinite alternate; }
+.la3 { transform-origin: 300px -44px; animation: laserR 1.7s ease-in-out infinite alternate; }
+.la4 { transform-origin: 300px -44px; animation: laserR 1.1s ease-in-out -0.4s infinite alternate; }
 @keyframes laserL { from { transform: rotate(18deg); } to { transform: rotate(72deg); } }
 @keyframes laserR { from { transform: rotate(-18deg); } to { transform: rotate(-72deg); } }
 .party-art .conf { animation-name: confFall430; }
-@keyframes confFall430 { from { transform: translateY(-20px) rotate(0deg); } to { transform: translateY(460px) rotate(600deg); } }
+@keyframes confFall430 { from { transform: translateY(-64px) rotate(0deg); } to { transform: translateY(460px) rotate(600deg); } }
 .hands-up .confetti { animation: confBoost 0.5s ease-out; }
 @keyframes confBoost { from { opacity: 0.3; } to { opacity: 1; } }
-.party-art .ball-sway { transform-origin: 84px 0; }
-.party-art .beams { transform-origin: 84px 44px; }
+.party-art .ball-sway { transform-origin: 58px -44px; }
+.party-art .beams { transform-origin: 58px -6px; }
 .party-art .orbit { transform-origin: 150px 200px; }
+.party-art .spot-l { transform-origin: 0 -44px; }
+.party-art .spot-r { transform-origin: 300px -44px; }
 .raf { animation: djPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both; transform-origin: 150px 300px; }
 
 /* dancing at the decks, on the beat (0.5 s) */
@@ -1281,7 +1283,7 @@ header h1 {
 @keyframes kNod { from { transform: rotate(-3deg); } to { transform: rotate(3deg) translateY(4px); } }
 .k-raise { transform-origin: 925px 390px; animation: kWave 0.5s ease-in-out infinite alternate; }
 @keyframes kWave { from { transform: rotate(-7deg); } to { transform: rotate(5deg); } }
-.k-fore { transform-origin: 578px 630px; transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.k-fore { transform-origin: 578px 630px; }
 .k-fore-move { transform-origin: 578px 630px; animation: kScratch 0.25s ease-in-out infinite alternate; }
 @keyframes kScratch { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
 .deck-leds ellipse { animation: ledPulse 0.5s ease-in-out infinite alternate; }
@@ -1290,9 +1292,19 @@ header h1 {
 /* hands in the air: a jump, both arms pumping */
 .hands-up .k-bob { animation-name: kJump; }
 @keyframes kJump { from { transform: translateY(0) rotate(-1.5deg); } to { transform: translateY(-40px) rotate(1.5deg); } }
-.hands-up .k-fore { transform: rotate(150deg); }
-.hands-up .k-fore-move { animation: kPump 0.5s ease-in-out infinite alternate; }
-@keyframes kPump { from { transform: rotate(-14deg); } to { transform: rotate(10deg); } }
+/* the watch arm whips up out of sight and his other arm (the raised one, mirrored)
+   swings up in its place, so both arms are the same size; it comes back for the decks */
+/* (no fading: one arm hands over to the other mid-swing, so neither looks see-through) */
+.k-fore { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s, opacity 0s 0.12s; }
+.hands-up .k-fore { transform: rotate(35deg); opacity: 0; transition: transform 0.12s ease-in, opacity 0s 0.07s; }
+.k-raise2 { transform-origin: 585px 575px; transform: rotate(-75deg); opacity: 0; transition: transform 0.13s ease-in, opacity 0s 0.12s; }
+.hands-up .k-raise2 { transform: rotate(-10deg); opacity: 1; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.07s, opacity 0s 0.07s; }
+.k-raise2-pump { transform-origin: 585px 575px; }
+.hands-up .k-raise2-pump { animation: kPumpL 0.5s ease-in-out infinite alternate; }
+@keyframes kPumpL { from { transform: rotate(10deg); } to { transform: rotate(-6deg); } }
+.k-raise2-fore { transform-origin: 525px 497px; transform: rotate(-60deg); }
+.hands-up .k-raise2-fore { animation: kElbow 0.5s ease-in-out infinite alternate; }
+@keyframes kElbow { from { transform: rotate(-52deg); } to { transform: rotate(-70deg); } }
 .hands-up .k-raise { animation-name: kPumpR; }
 @keyframes kPumpR { from { transform: rotate(-16deg); } to { transform: rotate(6deg); } }
 .hands-up .dancer .arm-l, .hands-up .dancer .arm-r { animation-duration: 0.25s; }
@@ -1311,7 +1323,7 @@ header h1 {
 .rb-dome { transform-origin: 700px 856px; transition: transform 0.08s ease-in; }
 .ph-button .k-head { animation: none; transform: rotate(-6deg); transition: transform 0.3s; }
 .ph-button .k-bob { animation-duration: 0.9s; }
-.ph-lift .k-fore { transform: rotate(70deg); transition-duration: 0.4s; }
+.ph-lift .k-fore { transform: rotate(22deg); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .ph-lift .k-fore-move, .ph-off .k-fore-move { animation: none; }
 .ph-press .k-fore { transform: rotate(-25deg); transition: transform 0.11s ease-in; }
 .ph-press .rb-dome { transform: translateY(9px) scaleY(0.5); }

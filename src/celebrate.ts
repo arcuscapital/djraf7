@@ -1,6 +1,8 @@
 import { isLoggedIn } from "./auth";
 import { PartySong, playFanfare, preloadPartySong } from "./audio";
 import rafArm from "./assets/raf/raf-arm.webp";
+import rafArm2Fore from "./assets/raf/raf-arm2-fore.webp";
+import rafArm2Upper from "./assets/raf/raf-arm2-upper.webp";
 import rafBody from "./assets/raf/raf-body.webp";
 import rafDeck from "./assets/raf/raf-deck.webp";
 import rafFore from "./assets/raf/raf-forearm.webp";
@@ -19,7 +21,7 @@ import { addOnAir, better, finishShow, MEDAL_NAME, RECORDS, type Celebration, ty
 const $ = (id: string) => document.getElementById(id) as HTMLElement;
 const root = $("celebrate");
 const SHOW_MS = { party: 23400, bronze: 40000, silver: 40000, gold: 40000 }; // the party story ends by itself
-const RAF: Record<string, string> = { "raf-arm": rafArm, "raf-body": rafBody, "raf-head": rafHead, "raf-deck": rafDeck, "raf-fore": rafFore, "raf-sleeve": rafSleeve };
+const RAF: Record<string, string> = { "raf-arm": rafArm, "raf-body": rafBody, "raf-head": rafHead, "raf-deck": rafDeck, "raf-fore": rafFore, "raf-sleeve": rafSleeve, "raf-arm2u": rafArm2Upper, "raf-arm2f": rafArm2Fore };
 let timer: number | null = null;
 
 export const MEDAL_COLOR: Record<Medal, string> = { bronze: "#9C5A2A", silver: "#C9CED6", gold: "#E8B62C" };
