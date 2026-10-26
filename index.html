@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#4A90E2" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Krom FM</title>
+  <link rel="manifest" href="/manifest.json" />
+</head>
+<body>
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="splash-screen" class="screen splash-screen">
+    <!-- Shared shapes for the note/spark burst -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="music-note" viewBox="0 0 40 50">
+          <ellipse cx="11" cy="40" rx="9" ry="6.5" transform="rotate(-18 11 40)" fill="currentColor"/>
+          <rect x="17" y="3" width="4.5" height="38" rx="2.2" fill="currentColor"/>
+          <path d="M21.5 3 C34 6 36.5 20 24 27 C30 19 28 8 21.5 11 Z" fill="currentColor"/>
+        </symbol>
+        <symbol id="spark-star" viewBox="0 0 20 20">
+          <path d="M10 0 L12.2 7.8 L20 10 L12.2 12.2 L10 20 L7.8 12.2 L0 10 L7.8 7.8 Z" fill="currentColor"/>
+        </symbol>
+        <symbol id="cele-rec" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="11.5" fill="currentColor"/>
+          <circle cx="12" cy="12" r="8.5" fill="none" stroke="#000" stroke-opacity="0.22" stroke-width="1"/>
+          <circle cx="12" cy="12" r="4.2" fill="#fff" fill-opacity="0.9"/>
+          <circle cx="12" cy="12" r="1.3" fill="currentColor"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div class="splash-stage">
+      <div class="radio-wrap">
+        <svg class="note note1" viewBox="0 0 40 50"><use href="#music-note"/></svg>
+        <svg class="note note2" viewBox="0 0 40 50"><use href="#music-note"/></svg>
+        <svg class="note note3" viewBox="0 0 40 50"><use href="#music-note"/></svg>
+        <svg class="note note4" viewBox="0 0 40 50"><use href="#music-note"/></svg>
+        <svg class="note note5" viewBox="0 0 40 50"><use href="#music-note"/></svg>
+        <svg class="spark spark1" viewBox="0 0 20 20"><use href="#spark-star"/></svg>
+        <svg class="spark spark2" viewBox="0 0 20 20"><use href="#spark-star"/></svg>
+        <svg class="spark spark3" viewBox="0 0 20 20"><use href="#spark-star"/></svg>
+
+        <svg class="radio-big" viewBox="0 -22 200 152">
+          <!-- feet -->
+          <rect x="38" y="122" width="14" height="10" rx="4" fill="#2d5f8a"/>
+          <rect x="148" y="122" width="14" height="10" rx="4" fill="#2d5f8a"/>
+          <!-- antenna -->
+          <line x1="150" y1="40" x2="180" y2="-12" stroke="#2d5f8a" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="180" cy="-12" r="5.5" fill="#F5A623"/>
+          <!-- handle -->
+          <path d="M55 40 C55 14 145 14 145 40" fill="none" stroke="#2d5f8a" stroke-width="8" stroke-linecap="round"/>
+          <!-- body -->
+          <rect x="20" y="38" width="160" height="90" rx="24" fill="#4A90E2"/>
+          <rect x="20" y="38" width="160" height="90" rx="24" fill="none" stroke="#2d5f8a" stroke-width="3"/>
+          <!-- speaker -->
+          <circle cx="68" cy="86" r="30" fill="#1e3a5f"/>
+          <circle cx="68" cy="86" r="30" fill="none" stroke="#173049" stroke-width="2"/>
+          <rect x="60" y="66" width="5" height="40" rx="2.5" fill="#3a6a94" opacity="0.9"/>
+          <rect x="70" y="66" width="5" height="40" rx="2.5" fill="#3a6a94" opacity="0.9"/>
+          <rect x="80" y="66" width="5" height="40" rx="2.5" fill="#3a6a94" opacity="0.9"/>
+          <!-- dials -->
+          <circle cx="140" cy="72" r="14" fill="#F5A623" stroke="#fff" stroke-width="3"/>
+          <circle cx="140" cy="104" r="9" fill="#E74C3C" stroke="#fff" stroke-width="2.5"/>
+        </svg>
+      </div>
+
+      <div class="dj-wrap">
+        <svg class="dj-svg" viewBox="0 0 240 210">
+          <circle cx="120" cy="118" r="92" fill="#9B59B6"/>
+          <circle cx="120" cy="118" r="92" fill="none" stroke="#7d3f9c" stroke-width="4"/>
+
+          <!-- turntables -->
+          <g>
+            <circle cx="42" cy="168" r="28" fill="#26232f"/>
+            <circle cx="42" cy="168" r="10" fill="#F5A623"/>
+            <circle cx="198" cy="168" r="28" fill="#26232f"/>
+            <circle cx="198" cy="168" r="10" fill="#F5A623"/>
+          </g>
+
+          <g class="dj-body-group">
+            <!-- left arm (still, resting) -->
+            <path d="M96 128 C78 138 62 150 50 160" fill="none" stroke="#4A90E2" stroke-width="16" stroke-linecap="round"/>
+            <circle cx="48" cy="162" r="11" fill="#FFD9A0"/>
+
+            <!-- torso -->
+            <rect x="90" y="98" width="60" height="68" rx="20" fill="#4A90E2"/>
+            <circle cx="120" cy="122" r="9" fill="#F5A623"/>
+
+            <!-- head -->
+            <circle cx="120" cy="66" r="34" fill="#FFD9A0"/>
+            <!-- ear headphone cups (behind cap edges) -->
+            <circle cx="88" cy="70" r="12" fill="#F5A623"/>
+            <circle cx="152" cy="70" r="12" fill="#F5A623"/>
+            <!-- cap: rounded dome sitting on top of the head, plus a front brim -->
+            <path d="M84 62 C84 28 156 28 156 62 C156 54 84 54 84 62 Z" fill="#2d5f8a"/>
+            <ellipse cx="120" cy="42" rx="36" ry="24" fill="#3a72a8"/>
+            <path d="M84 60 C84 26 156 26 156 60 L156 52 C156 52 120 40 84 52 Z" fill="#2d5f8a"/>
+            <ellipse cx="94" cy="60" rx="24" ry="10" fill="#2d5f8a"/>
+            <circle cx="120" cy="20" r="4" fill="#3a72a8"/>
+            <!-- face -->
+            <path d="M104 66 Q110 71 116 66" fill="none" stroke="#1e3a5f" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M124 66 Q130 71 136 66" fill="none" stroke="#1e3a5f" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M104 80 Q120 95 136 80" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="100" cy="76" r="5" fill="#ff9d9d" opacity="0.6"/>
+            <circle cx="140" cy="76" r="5" fill="#ff9d9d" opacity="0.6"/>
+          </g>
+
+          <!-- scratching hand -->
+          <g class="dj-hand-right">
+            <path d="M144 128 C162 136 178 148 190 158" fill="none" stroke="#4A90E2" stroke-width="16" stroke-linecap="round"/>
+            <circle cx="192" cy="160" r="11" fill="#FFD9A0"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <h1 class="splash-title">Krom FM</h1>
+    <p class="splash-loading"><span id="splash-phrase">Warming up the mic</span><span class="dots">...</span></p>
+    <p class="splash-tap-hint hidden" id="splash-tap-hint">Tap to start!</p>
+  </div>
+
+  <!-- ===== BUILDER SCREEN ===== -->
+  <div id="builder-screen" class="screen hidden">
+    <header>
+      <div class="logo">
+        <span class="radio-icon">📻</span>
+        <h1>Krom FM</h1>
+      </div>
+      <span class="mode-badge">DJ Mode</span>
+    </header>
+
+    <h2 class="screen-title">The DJ Raf Show</h2>
+
+    <div class="playlist-box">
+      <div class="box-head">
+        <label>🎵 Songs from Spotify</label>
+        <button id="order-btn" class="menu-btn hidden" aria-label="Change the song order">☰</button>
+      </div>
+      <div class="source-row">
+        <span id="source-name" class="source-name">Nothing loaded yet</span>
+      </div>
+      <button id="source-login-btn" class="btn btn-spotify hidden">Connect Spotify</button>
+      <div class="source-actions" id="source-actions">
+        <p class="source-instruction">Play a playlist on Spotify, then push this button</p>
+        <button id="use-playing-btn" class="btn btn-load">▶ Use what's playing</button>
+      </div>
+      <small id="source-hint"></small>
+    </div>
+
+    <div id="blocks-list" class="blocks-list">
+      <!-- Blocks will be rendered here by JS -->
+    </div>
+
+    <div class="add-block-area">
+      <button id="add-block-btn" class="btn btn-add">+ Add Block</button>
+    </div>
+
+    <div class="loop-toggle-area">
+      <label class="loop-label">
+        <input type="checkbox" id="loop-toggle" />
+        <span class="toggle-slider"></span>
+        <span class="loop-text">🔁 Loop the show</span>
+      </label>
+    </div>
+
+    <button id="start-show-btn" class="btn btn-start">▶ Start Show</button>
+    <button id="restart-show-link" class="link-btn hidden">Restart Current Show</button>
+
+    <p class="helper-text">Hold a block, then drag it to move it<br>Tap + to add more</p>
+
+    <div class="spotify-status" id="spotify-status">
+      <button id="login-btn" class="btn btn-spotify">Connect Spotify</button>
+      <span id="spotify-connected" class="hidden">✅ Spotify connected</span>
+      <div id="device-hint" class="device-hint hidden">
+        <p id="device-hint-text">Open the Spotify app on this phone (so it shows up as a speaker), then tap Refresh.</p>
+        <button id="refresh-device-btn" class="btn btn-secondary">🔁 Refresh</button>
+      </div>
+    </div>
+
+    <p id="app-version-tag" class="version-tag"></p>
+  </div>
+
+  <!-- ===== LIVE SHOW SCREEN ===== -->
+  <div id="live-screen" class="screen hidden">
+    <header>
+      <div class="logo">
+        <span class="radio-icon">📻</span>
+        <h1>Krom FM</h1>
+      </div>
+      <span class="live-badge">ON AIR</span>
+    </header>
+
+    <div class="status-card" id="status-card">
+      <button id="live-order-btn" class="menu-btn live-menu hidden" aria-label="Change the song order">☰</button>
+      <div class="status-label" id="status-label">Krom FM</div>
+      <div class="status-main" id="status-main">Getting ready…</div>
+      <div class="status-sub" id="status-sub"></div>
+      <div class="progress-bar-hit" id="progress-bar-hit">
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+      <div class="time-row">
+        <span id="time-elapsed">0:00</span>
+        <span id="time-remaining"></span>
+      </div>
+      <ol class="run-list hidden" id="run-list"></ol>
+    </div>
+
+    <div class="trouble hidden" id="trouble"></div>
+    <div class="star-pop hidden" id="star-pop" aria-live="polite"><svg class="star-pop-icon" id="star-pop-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#cele-rec"/></svg><span id="star-pop-text">You earned a bronze record!</span></div>
+
+    <div class="next-up" id="next-up">
+      Next up: —
+    </div>
+
+    <div class="live-buttons">
+      <button id="finished-talking-btn" class="btn btn-finished">I'm finished talking → Next</button>
+      <button id="music-btn" class="btn btn-music hidden">🎶 Background music: OFF</button>
+      <button id="skip-song-btn" class="btn btn-skip">Skip this song</button>
+      <button id="pause-btn" class="btn btn-pause">Pause everything</button>
+      <button id="stop-show-btn" class="btn btn-stop">Stop / change my show</button>
+    </div>
+
+    <div class="timetable-wrap">
+      <div class="timetable-label">🎶 What's Coming Up</div>
+      <div id="timetable" class="timetable"></div>
+    </div>
+  </div>
+
+  <!-- ===== ADD BLOCK MODAL ===== -->
+  <div id="add-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Add a Block</h3>
+      <button class="block-type-btn" data-type="songs">🎵 Play Songs</button>
+      <button class="block-type-btn" data-type="jingle">🎤 Jingle</button>
+      <button class="block-type-btn" data-type="talk">🗣️ Weather, Traffic, News</button>
+      <button class="block-type-btn" data-type="bed">🎶 DJ Talk</button>
+      <button class="block-type-btn" data-type="commercial">📢 Commercial Break</button>
+      <button id="close-modal" class="btn btn-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ===== BLOCK MODE MODAL (talk live / record) ===== -->
+  <div id="mode-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="mode-modal-title">How should this work?</h3>
+      <button class="mode-btn" data-mode="talk">🎤 Talk</button>
+      <button class="mode-btn" data-mode="record">🎙️ Record</button>
+      <button id="close-mode-modal" class="btn btn-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ===== RECORD MODAL ===== -->
+  <div id="recorder-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Record your voice</h3>
+      <p class="recorder-hint" id="recorder-hint">Tap the button, say your bit, then tap stop.</p>
+      <button id="recorder-music-btn" class="btn btn-music">🎶 Background music: OFF</button>
+      <button id="recorder-over-btn" class="btn btn-music">🎤 Over the next song: OFF</button>
+      <p class="over-song hidden" id="recorder-over-song"></p>
+      <button id="recorder-listen-btn" class="btn btn-secondary hidden">▶ Listen to the start</button>
+      <button id="recorder-main-btn" class="btn btn-record">⏺ Start Recording</button>
+      <div id="recorder-timer" class="record-timer hidden">0:00</div>
+      <audio id="recorder-preview" class="hidden" controls></audio>
+      <button id="recorder-save-btn" class="btn btn-start hidden">✅ Use This Recording</button>
+      <button id="recorder-retry-btn" class="btn btn-secondary hidden">🔁 Record Again</button>
+      <button id="close-recorder-modal" class="btn btn-cancel">Cancel</button>
+    </div>
+  </div>
+
+
+  <!-- ===== SONGS BLOCK SHEET ===== -->
+  <div id="songs-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="songs-modal-title">Songs</h3>
+      <div class="count-row">
+        <button class="num-btn dark" id="songs-minus">−</button>
+        <span id="songs-count" class="big-count">3</span>
+        <button class="num-btn dark" id="songs-plus">+</button>
+      </div>
+      <div id="songs-list" class="pick-list"></div>
+      <p class="recorder-hint" id="songs-hint">Tap 🔁 to swap a song.</p>
+      <button id="songs-done" class="btn btn-start">Done</button>
+    </div>
+  </div>
+
+  <!-- ===== SONG ORDER (☰) ===== -->
+  <div id="order-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="order-title">Song order</h3>
+      <p class="recorder-hint" id="order-hint">Press and hold a song, then drag it up or down.</p>
+      <ol id="order-list" class="pick-list tall order-list"></ol>
+      <button id="order-done" class="btn btn-start">Done</button>
+    </div>
+  </div>
+
+  <!-- ===== PICK A SONG / PLAYLIST ===== -->
+  <div id="pick-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="pick-title">Pick one</h3>
+      <div id="pick-list" class="pick-list tall"></div>
+      <button id="close-pick-modal" class="btn btn-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ===== END SCREEN ===== -->
+  <div id="end-screen" class="screen hidden">
+    <div class="end-content">
+      <h2>🎉 Show finished!</h2>
+      <p>Great job, DJ!</p>
+      <button id="play-again-btn" class="btn btn-start">Play it again</button>
+      <button id="back-to-builder-btn" class="btn btn-secondary">Change my show</button>
+    </div>
+  </div>
+
+  <!-- ===== END-OF-SHOW CELEBRATION (Raf's dance party, or the record he won) ===== -->
+  <div id="celebrate" class="celebrate hidden" role="dialog" aria-label="Show finished celebration">
+    <button id="celebrate-close" class="cele-close" aria-label="Close">✕</button>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="cele-note" viewBox="0 0 40 50">
+          <ellipse cx="11" cy="40" rx="9" ry="6.5" transform="rotate(-18 11 40)" fill="currentColor"/>
+          <rect x="17" y="3" width="4.5" height="38" rx="2.2" fill="currentColor"/>
+          <path d="M21.5 3 C34 6 36.5 20 24 27 C30 19 28 8 21.5 11 Z" fill="currentColor"/>
+        </symbol>
+        <symbol id="cele-star" viewBox="0 0 20 20">
+          <path d="M10 0 L12.2 7.8 L20 10 L12.2 12.2 L10 20 L7.8 12.2 L0 10 L7.8 7.8 Z" fill="currentColor"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- B: dance party — Raf (his picture, cut into moving parts) DJs for ten
+         seconds with his hands in the air, presses the big red button, the disco
+         ball goes off and the dancers walk out of the room. No writing. -->
+    <div id="scene-party" class="cele-scene hidden">
+      <svg class="cele-art party-art" viewBox="0 0 300 450" aria-hidden="true">
+        <defs>
+          <clipPath id="cele-ballclip"><circle cx="84" cy="44" r="27"/></clipPath>
+          <radialGradient id="rb-glow"><stop offset="0" stop-color="#ff3b3b" stop-opacity="0.75"/><stop offset="1" stop-color="#ff3b3b" stop-opacity="0"/></radialGradient>
+          <radialGradient id="door-glow"><stop offset="0" stop-color="#fff4c2" stop-opacity="0.9"/><stop offset="1" stop-color="#ffd34d" stop-opacity="0"/></radialGradient>
+          <mask id="iris-mask"><rect x="-40" y="-40" width="380" height="530" fill="#fff"/><circle class="iris-hole" cx="196" cy="112" r="40" fill="#000"/></mask>
+        </defs>
+
+        <!-- the party lights (they all go off with the button) -->
+        <g class="lights">
+          <g class="spot spot-l"><path d="M0 0 L118 450 L196 450 Z" fill="#ff5fa2" opacity="0.22"/></g>
+          <g class="spot spot-r"><path d="M300 0 L104 450 L182 450 Z" fill="#4dd9ff" opacity="0.22"/></g>
+          <g class="orbit"><circle class="dot dt1" cx="30" cy="140" r="4" fill="#ffffff"/><circle class="dot dt2" cx="266" cy="40" r="5" fill="#FFD9A0"/><circle class="dot dt3" cx="36" cy="236" r="3.5" fill="#ff5fa2"/><circle class="dot dt4" cx="150" cy="24" r="4" fill="#4dd9ff"/><circle class="dot dt1" cx="118" cy="190" r="3" fill="#ffffff"/><circle class="dot dt2" cx="280" cy="170" r="3" fill="#ffffff"/><circle class="dot dt3" cx="140" cy="60" r="3" fill="#4dd9ff"/><circle class="dot dt4" cx="20" cy="40" r="4" fill="#FFD9A0"/><circle class="dot dt1" cx="60" cy="120" r="3" fill="#ff5fa2"/><circle class="dot dt2" cx="110" cy="250" r="3" fill="#FFD9A0"/></g>
+          <g class="beams">
+            <path d="M84 44 L-40 450 L20 450 Z" fill="#fff" opacity="0.14"/>
+            <path d="M84 44 L150 450 L210 450 Z" fill="#fff" opacity="0.14"/>
+            <path d="M84 44 L60 450 L104 450 Z" fill="#FFD9A0" opacity="0.16"/>
+            <path d="M84 44 L250 450 L300 450 Z" fill="#ff5fa2" opacity="0.12"/>
+          </g>
+          <g class="lasers">
+            <line class="laser la1" x1="0" y1="0" x2="420" y2="0" stroke="#39ff14" stroke-width="1.6"/>
+            <line class="laser la2" x1="0" y1="0" x2="420" y2="0" stroke="#ff3df2" stroke-width="1.6"/>
+            <line class="laser la3" x1="300" y1="0" x2="-120" y2="0" stroke="#4dd9ff" stroke-width="1.6"/>
+            <line class="laser la4" x1="300" y1="0" x2="-120" y2="0" stroke="#39ff14" stroke-width="1.6"/>
+          </g>
+          <g class="confetti">
+            <rect class="conf c1" x="12" y="0" width="7" height="5" fill="#F5A623"/><rect class="conf c2" x="46" y="0" width="7" height="5" fill="#fff"/>
+            <rect class="conf c3" x="82" y="0" width="7" height="5" fill="#E74C3C"/><rect class="conf c4" x="118" y="0" width="7" height="5" fill="#2ECC71"/>
+            <rect class="conf c5" x="150" y="0" width="7" height="5" fill="#FFD9A0"/><rect class="conf c6" x="186" y="0" width="7" height="5" fill="#4dd9ff"/>
+            <rect class="conf c7" x="222" y="0" width="7" height="5" fill="#ff5fa2"/><rect class="conf c8" x="256" y="0" width="7" height="5" fill="#9B59B6"/>
+            <rect class="conf c9" x="284" y="0" width="7" height="5" fill="#F5A623"/><rect class="conf c10" x="170" y="0" width="7" height="5" fill="#E74C3C"/>
+          </g>
+        </g>
+
+        <!-- disco ball -->
+        <g class="ball-drop"><g class="ball-sway">
+          <line x1="84" y1="0" x2="84" y2="17" stroke="#e8edf6" stroke-width="2"/>
+          <g class="ball-face">
+            <circle cx="84" cy="44" r="27" fill="#8f9bb5"/>
+            <g clip-path="url(#cele-ballclip)"><g class="ball-spin"><rect x="44" y="16" width="10" height="9.5" fill="#ffffff"/><rect x="44" y="27" width="10" height="9.5" fill="#b8c2d6"/><rect x="44" y="38" width="10" height="9.5" fill="#e3e8f2"/><rect x="44" y="49" width="10" height="9.5" fill="#ffffff"/><rect x="44" y="60" width="10" height="9.5" fill="#b8c2d6"/><rect x="44" y="71" width="10" height="9.5" fill="#e3e8f2"/><rect x="56" y="16" width="10" height="9.5" fill="#b8c2d6"/><rect x="56" y="27" width="10" height="9.5" fill="#e3e8f2"/><rect x="56" y="38" width="10" height="9.5" fill="#ffffff"/><rect x="56" y="49" width="10" height="9.5" fill="#b8c2d6"/><rect x="56" y="60" width="10" height="9.5" fill="#e3e8f2"/><rect x="56" y="71" width="10" height="9.5" fill="#ffffff"/><rect x="68" y="16" width="10" height="9.5" fill="#e3e8f2"/><rect x="68" y="27" width="10" height="9.5" fill="#ffffff"/><rect x="68" y="38" width="10" height="9.5" fill="#b8c2d6"/><rect x="68" y="49" width="10" height="9.5" fill="#e3e8f2"/><rect x="68" y="60" width="10" height="9.5" fill="#ffffff"/><rect x="68" y="71" width="10" height="9.5" fill="#b8c2d6"/><rect x="80" y="16" width="10" height="9.5" fill="#ffffff"/><rect x="80" y="27" width="10" height="9.5" fill="#b8c2d6"/><rect x="80" y="38" width="10" height="9.5" fill="#e3e8f2"/><rect x="80" y="49" width="10" height="9.5" fill="#ffffff"/><rect x="80" y="60" width="10" height="9.5" fill="#b8c2d6"/><rect x="80" y="71" width="10" height="9.5" fill="#e3e8f2"/><rect x="92" y="16" width="10" height="9.5" fill="#b8c2d6"/><rect x="92" y="27" width="10" height="9.5" fill="#e3e8f2"/><rect x="92" y="38" width="10" height="9.5" fill="#ffffff"/><rect x="92" y="49" width="10" height="9.5" fill="#b8c2d6"/><rect x="92" y="60" width="10" height="9.5" fill="#e3e8f2"/><rect x="92" y="71" width="10" height="9.5" fill="#ffffff"/><rect x="104" y="16" width="10" height="9.5" fill="#e3e8f2"/><rect x="104" y="27" width="10" height="9.5" fill="#ffffff"/><rect x="104" y="38" width="10" height="9.5" fill="#b8c2d6"/><rect x="104" y="49" width="10" height="9.5" fill="#e3e8f2"/><rect x="104" y="60" width="10" height="9.5" fill="#ffffff"/><rect x="104" y="71" width="10" height="9.5" fill="#b8c2d6"/><rect x="116" y="16" width="10" height="9.5" fill="#ffffff"/><rect x="116" y="27" width="10" height="9.5" fill="#b8c2d6"/><rect x="116" y="38" width="10" height="9.5" fill="#e3e8f2"/><rect x="116" y="49" width="10" height="9.5" fill="#ffffff"/><rect x="116" y="60" width="10" height="9.5" fill="#b8c2d6"/><rect x="116" y="71" width="10" height="9.5" fill="#e3e8f2"/><rect x="128" y="16" width="10" height="9.5" fill="#b8c2d6"/><rect x="128" y="27" width="10" height="9.5" fill="#e3e8f2"/><rect x="128" y="38" width="10" height="9.5" fill="#ffffff"/><rect x="128" y="49" width="10" height="9.5" fill="#b8c2d6"/><rect x="128" y="60" width="10" height="9.5" fill="#e3e8f2"/><rect x="128" y="71" width="10" height="9.5" fill="#ffffff"/><rect x="140" y="16" width="10" height="9.5" fill="#e3e8f2"/><rect x="140" y="27" width="10" height="9.5" fill="#ffffff"/><rect x="140" y="38" width="10" height="9.5" fill="#b8c2d6"/><rect x="140" y="49" width="10" height="9.5" fill="#e3e8f2"/><rect x="140" y="60" width="10" height="9.5" fill="#ffffff"/><rect x="140" y="71" width="10" height="9.5" fill="#b8c2d6"/><rect x="152" y="16" width="10" height="9.5" fill="#ffffff"/><rect x="152" y="27" width="10" height="9.5" fill="#b8c2d6"/><rect x="152" y="38" width="10" height="9.5" fill="#e3e8f2"/><rect x="152" y="49" width="10" height="9.5" fill="#ffffff"/><rect x="152" y="60" width="10" height="9.5" fill="#b8c2d6"/><rect x="152" y="71" width="10" height="9.5" fill="#e3e8f2"/><rect x="164" y="16" width="10" height="9.5" fill="#b8c2d6"/><rect x="164" y="27" width="10" height="9.5" fill="#e3e8f2"/><rect x="164" y="38" width="10" height="9.5" fill="#ffffff"/><rect x="164" y="49" width="10" height="9.5" fill="#b8c2d6"/><rect x="164" y="60" width="10" height="9.5" fill="#e3e8f2"/><rect x="164" y="71" width="10" height="9.5" fill="#ffffff"/><rect x="176" y="16" width="10" height="9.5" fill="#e3e8f2"/><rect x="176" y="27" width="10" height="9.5" fill="#ffffff"/><rect x="176" y="38" width="10" height="9.5" fill="#b8c2d6"/><rect x="176" y="49" width="10" height="9.5" fill="#e3e8f2"/><rect x="176" y="60" width="10" height="9.5" fill="#ffffff"/><rect x="176" y="71" width="10" height="9.5" fill="#b8c2d6"/><rect x="188" y="16" width="10" height="9.5" fill="#ffffff"/><rect x="188" y="27" width="10" height="9.5" fill="#b8c2d6"/><rect x="188" y="38" width="10" height="9.5" fill="#e3e8f2"/><rect x="188" y="49" width="10" height="9.5" fill="#ffffff"/><rect x="188" y="60" width="10" height="9.5" fill="#b8c2d6"/><rect x="188" y="71" width="10" height="9.5" fill="#e3e8f2"/><rect x="200" y="16" width="10" height="9.5" fill="#b8c2d6"/><rect x="200" y="27" width="10" height="9.5" fill="#e3e8f2"/><rect x="200" y="38" width="10" height="9.5" fill="#ffffff"/><rect x="200" y="49" width="10" height="9.5" fill="#b8c2d6"/><rect x="200" y="60" width="10" height="9.5" fill="#e3e8f2"/><rect x="200" y="71" width="10" height="9.5" fill="#ffffff"/></g></g>
+            <ellipse class="ball-shine" cx="75" cy="33" rx="9" ry="5.5" fill="#ffffff" opacity="0.55"/>
+            <circle cx="84" cy="44" r="27" fill="none" stroke="#6f7b96" stroke-width="2"/>
+          </g>
+          <g class="ball-glints">
+            <use href="#cele-star" class="glint g1" x="50" y="16" width="15" height="15" style="color:#fff"/>
+            <use href="#cele-star" class="glint g2" x="104" y="54" width="13" height="13" style="color:#FFD9A0"/>
+            <use href="#cele-star" class="glint g3" x="96" y="12" width="10" height="10" style="color:#4dd9ff"/>
+          </g>
+        </g></g>
+
+        <!-- Raf at his decks (image pixels inside) -->
+        <svg class="raf" x="14" y="8" width="272" height="264" viewBox="0 0 1024 994" overflow="visible">
+          <g class="k-bob">
+            <g class="k-raise"><image id="raf-arm" x="771" y="32" width="238" height="408"/></g>
+            <image id="raf-body" x="441" y="145" width="574" height="740"/>
+            <g class="k-head"><image id="raf-head" x="441" y="158" width="412" height="366"/></g>
+          </g>
+          <image id="raf-deck" class="k-deck" x="42" y="772" width="972" height="222"/>
+          <g class="deck-leds">
+            <ellipse cx="350" cy="868" rx="150" ry="44" fill="none" stroke="#4dd9ff" stroke-width="6" opacity="0.7"/>
+            <ellipse cx="928" cy="818" rx="92" ry="30" fill="none" stroke="#4dd9ff" stroke-width="6" opacity="0.7"/>
+          </g>
+          <g class="rb">
+            <circle class="rb-glow" cx="700" cy="846" r="110" fill="url(#rb-glow)"/>
+            <ellipse cx="700" cy="860" rx="56" ry="21" fill="#1b1b22" stroke="#F5D000" stroke-width="7" stroke-dasharray="14 10"/>
+            <g class="rb-dome">
+              <rect x="662" y="830" width="76" height="22" fill="#b3121b"/>
+              <ellipse cx="700" cy="852" rx="38" ry="14" fill="#b3121b"/>
+              <ellipse cx="700" cy="830" rx="38" ry="14" fill="#ff2a2a"/>
+              <ellipse cx="688" cy="826" rx="14" ry="5" fill="#fff" opacity="0.7"/>
+            </g>
+          </g>
+          <path class="pow" d="M700 640 L736 760 L850 700 L780 800 L900 846 L780 880 L850 990 L730 920 L700 1040 L670 920 L550 990 L620 880 L500 846 L620 800 L550 700 L664 760 Z" fill="#FFD34D" stroke="#ff7a00" stroke-width="10" stroke-linejoin="round"/>
+          <g class="k-bob">
+            <g class="k-fore"><g class="k-fore-move"><image id="raf-fore" x="530" y="598" width="137" height="279"/></g></g>
+            <image id="raf-sleeve" x="535" y="539" width="127" height="139"/>
+          </g>
+          <circle class="rb-ring" cx="700" cy="840" r="40" fill="none" stroke="#FFD34D" stroke-width="10"/>
+          <circle class="rb-ring rr2" cx="700" cy="840" r="40" fill="none" stroke="#ffffff" stroke-width="6"/>
+        </svg>
+
+        <!-- music bursting out (goes with the lights) -->
+        <g class="lights">
+          <use href="#cele-note" class="floatnote n1" x="16" y="150" width="22" height="28" style="color:#F5A623"/>
+          <use href="#cele-note" class="floatnote n2" x="256" y="40" width="24" height="30" style="color:#7ED321"/>
+          <use href="#cele-note" class="floatnote n3" x="120" y="110" width="18" height="22" style="color:#fff"/>
+          <use href="#cele-note" class="floatnote n4" x="40" y="220" width="18" height="22" style="color:#E74C3C"/>
+          <use href="#cele-note" class="burst bu1" x="176" y="230" width="20" height="25" style="color:#F5A623;--dx:-62px;--dy:-96px;--r:-22deg"/>
+          <use href="#cele-note" class="burst bu2" x="182" y="230" width="20" height="25" style="color:#7ED321;--dx:-24px;--dy:-120px;--r:10deg"/>
+          <use href="#cele-note" class="burst bu3" x="250" y="220" width="20" height="25" style="color:#ffffff;--dx:22px;--dy:-124px;--r:-8deg"/>
+          <use href="#cele-note" class="burst bu4" x="96" y="240" width="20" height="25" style="color:#4dd9ff;--dx:-40px;--dy:-98px;--r:16deg"/>
+          <use href="#cele-note" class="burst bu5" x="268" y="230" width="20" height="25" style="color:#ff5fa2;--dx:4px;--dy:-130px;--r:-14deg"/>
+          <use href="#cele-star" class="cspark cs1" x="128" y="20" width="16" height="16" style="color:#FFD9A0"/>
+          <use href="#cele-star" class="cspark cs2" x="250" y="110" width="14" height="14" style="color:#ffffff"/>
+          <use href="#cele-star" class="cspark cs3" x="30" y="100" width="14" height="14" style="color:#ffffff"/>
+          <use href="#cele-star" class="cspark cs4" x="140" y="200" width="16" height="16" style="color:#FFD9A0"/>
+        </g>
+
+        <!-- the way out: a side door with a little running-man sign -->
+        <g class="exit">
+          <path class="door-light" d="M0 318 L34 326 L34 422 L0 430 Z" fill="#fff4c2"/>
+          <path class="door-spill" d="M34 422 L0 430 L60 450 L120 450 Z" fill="url(#door-glow)"/>
+          <path class="door-panel" d="M0 318 L34 326 L34 422 L0 430 Z" fill="#3b2a6b" stroke="#24184a" stroke-width="2"/>
+          <circle class="door-knob" cx="28" cy="376" r="2.2" fill="#F5A623"/>
+          <g class="exit-sign">
+            <rect x="2" y="298" width="30" height="15" rx="2" fill="#1f8f3a"/>
+            <circle cx="20" cy="301.5" r="1.8" fill="#fff"/>
+            <path d="M19 304 L16 308 M19 304 L21 308 L24 311 M17 305 L14 307 M19 305 L23 305 M21 308 L18 311" stroke="#fff" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path d="M8 305.5 L12 305.5 M10 303.5 L12 305.5 L10 307.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          </g>
+        </g>
+
+        <!-- the three dancers -->
+        <g class="walker w1"><g class="dancer-in di1"><g class="dancer d1"><svg x="14" y="300" width="76" height="127" viewBox="0 0 60 100" overflow="visible" style="color:#E74C3C">
+          <path class="arm-l" d="M18 40 L6 16" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <path class="arm-r" d="M42 40 L54 16" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <path class="leg-a" d="M24 66 L16 94" stroke="#2d5f8a" stroke-width="8" stroke-linecap="round"/>
+          <path class="leg-b" d="M36 66 L46 94" stroke="#2d5f8a" stroke-width="8" stroke-linecap="round"/>
+          <rect x="18" y="33" width="24" height="34" rx="10" fill="currentColor"/>
+          <circle cx="30" cy="20" r="12" fill="#FFD9A0"/><path class="smile" d="M24 22 Q30 28 36 22" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round"/>
+          <path class="frown" d="M25 26 Q30 22 35 26" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round"/>
+        </svg></g></g></g>
+        <g class="walker w2"><g class="dancer-in di2"><g class="dancer d2"><svg x="112" y="294" width="76" height="127" viewBox="0 0 60 100" overflow="visible" style="color:#F5A623">
+          <path class="arm-l" d="M18 40 L8 62" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <path class="arm-r" d="M42 40 L52 14" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <path class="leg-a" d="M24 66 L22 94" stroke="#2d5f8a" stroke-width="8" stroke-linecap="round"/>
+          <path class="leg-b" d="M36 66 L50 86" stroke="#2d5f8a" stroke-width="8" stroke-linecap="round"/>
+          <rect x="18" y="33" width="24" height="34" rx="10" fill="currentColor"/>
+          <circle cx="30" cy="20" r="12" fill="#FFD9A0"/><path class="smile" d="M24 22 Q30 28 36 22" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round"/>
+          <path class="frown" d="M25 26 Q30 22 35 26" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round"/>
+        </svg></g></g></g>
+        <g class="walker w3"><g class="dancer-in di3"><g class="moonwalk"><g class="mw-lean"><svg x="210" y="300" width="76" height="127" viewBox="0 0 60 100" overflow="visible" style="color:#26232f">
+          <g class="mw-leg mw-leg1"><path d="M25 64 L21 91" stroke="#26232f" stroke-width="8" stroke-linecap="round"/><rect x="13" y="89" width="13" height="6" rx="3" fill="#ffffff"/></g>
+          <g class="mw-leg mw-leg2"><path d="M35 64 L39 91" stroke="#26232f" stroke-width="8" stroke-linecap="round"/><rect x="34" y="89" width="13" height="6" rx="3" fill="#ffffff"/></g>
+          <path d="M19 40 L12 63" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><circle cx="12" cy="65" r="5" fill="#FFD9A0"/>
+          <rect x="18" y="33" width="24" height="34" rx="10" fill="currentColor"/>
+          <path d="M30 35 L30 56" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="30" cy="20" r="12" fill="#FFD9A0"/><path d="M24 22 Q30 28 36 22" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round"/>
+          <g class="mw-hat"><ellipse cx="32" cy="11" rx="16" ry="3.2" fill="#26232f"/><rect x="23" y="0" width="17" height="11" rx="4" fill="#26232f"/><rect x="23" y="7" width="17" height="2.4" fill="#ffffff"/></g>
+          <g class="mw-arm"><path d="M41 40 L49 28 L42 14" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="13" r="5.5" fill="#ffffff"/></g>
+        </svg></g></g></g></g>
+
+        <!-- "huh?" when the lights go out -->
+        <g class="huh-all" font-size="26" font-weight="900" fill="#fff" stroke="#1e1450" stroke-width="2" paint-order="stroke" text-anchor="middle">
+          <text class="huh h1" x="52" y="300">?</text>
+          <text class="huh h2" x="150" y="294">?</text>
+          <text class="huh h3" x="252" y="300">?</text>
+        </g>
+
+        <g class="floor">
+          <rect class="tile t1" x="0" y="422" width="60" height="28" fill="#E74C3C"/>
+          <rect class="tile t2" x="60" y="422" width="60" height="28" fill="#F5A623"/>
+          <rect class="tile t3" x="120" y="422" width="60" height="28" fill="#2ECC71"/>
+          <rect class="tile t4" x="180" y="422" width="60" height="28" fill="#4A90E2"/>
+          <rect class="tile t5" x="240" y="422" width="60" height="28" fill="#9B59B6"/>
+        </g>
+
+        <!-- the end: the picture closes in a circle round Raf, like a cartoon -->
+        <rect class="iris" x="-40" y="-40" width="380" height="530" fill="#05040f" mask="url(#iris-mask)"/>
+      </svg>
+    </div>
+
+    <!-- C: a record — bronze, silver or gold -->
+    <div id="scene-record" class="cele-scene medal-gold hidden">
+      <h2 class="cele-title" id="record-title">Gold record!</h2>
+      <svg class="cele-art" viewBox="0 0 300 330" aria-hidden="true">
+        <g class="rays" fill="#fff">
+          <path d="M150 150 L138 0 L162 0 Z" opacity="0.2"/><path d="M150 150 L138 0 L162 0 Z" opacity="0.12" transform="rotate(30 150 150)"/>
+          <path d="M150 150 L138 0 L162 0 Z" opacity="0.2" transform="rotate(60 150 150)"/><path d="M150 150 L138 0 L162 0 Z" opacity="0.12" transform="rotate(90 150 150)"/>
+          <path d="M150 150 L138 0 L162 0 Z" opacity="0.2" transform="rotate(120 150 150)"/><path d="M150 150 L138 0 L162 0 Z" opacity="0.12" transform="rotate(150 150 150)"/>
+          <path d="M150 150 L138 0 L162 0 Z" opacity="0.2" transform="rotate(180 150 150)"/><path d="M150 150 L138 0 L162 0 Z" opacity="0.12" transform="rotate(210 150 150)"/>
+          <path d="M150 150 L138 0 L162 0 Z" opacity="0.2" transform="rotate(240 150 150)"/><path d="M150 150 L138 0 L162 0 Z" opacity="0.12" transform="rotate(270 150 150)"/>
+          <path d="M150 150 L138 0 L162 0 Z" opacity="0.2" transform="rotate(300 150 150)"/><path d="M150 150 L138 0 L162 0 Z" opacity="0.12" transform="rotate(330 150 150)"/>
+        </g>
+        <use href="#cele-star" class="glint g1" x="34" y="40" width="22" height="22" style="color:#FFD9A0"/>
+        <use href="#cele-star" class="glint g2" x="244" y="36" width="18" height="18" style="color:#fff"/>
+        <use href="#cele-star" class="glint g3" x="26" y="226" width="16" height="16" style="color:#fff"/>
+        <use href="#cele-star" class="glint g4" x="256" y="214" width="22" height="22" style="color:#FFD9A0"/>
+        <g class="rec-beat"><g class="rec-in"><g class="rec-spin">
+          <circle class="rec-face" cx="150" cy="150" r="100"/>
+          <circle class="rec-groove" cx="150" cy="150" r="90" fill="none" stroke-width="2"/>
+          <circle class="rec-groove" cx="150" cy="150" r="78" fill="none" stroke-width="2"/>
+          <circle class="rec-groove" cx="150" cy="150" r="66" fill="none" stroke-width="2"/>
+          <circle class="rec-groove" cx="150" cy="150" r="54" fill="none" stroke-width="2"/>
+          <path class="rec-shine" d="M84 104 A80 80 0 0 1 150 70" fill="none" stroke-width="6" stroke-linecap="round"/>
+          <path class="rec-shine" d="M216 196 A80 80 0 0 1 180 224" fill="none" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+          <circle class="rec-label" cx="150" cy="150" r="38"/>
+          <use href="#cele-star" x="128" y="128" width="44" height="44" style="color:#fff"/>
+          <circle cx="150" cy="150" r="4" fill="#26232f"/>
+        </g></g></g>
+        <g class="tonearm">
+          <circle cx="262" cy="56" r="12" fill="#e8edf6" stroke="#8f9bb5" stroke-width="2"/>
+          <path d="M262 56 L232 150 L214 160" fill="none" stroke="#e8edf6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="203" y="154" width="16" height="10" rx="3" fill="#26232f" transform="rotate(-20 211 159)"/>
+        </g>
+        <defs><clipPath id="cele-recclip"><circle cx="150" cy="150" r="100"/></clipPath></defs>
+        <g clip-path="url(#cele-recclip)"><path class="shine" d="M40 40 L74 40 L34 270 L0 270 Z" fill="#ffffff" opacity="0.35"/></g>
+        <g class="ring"><use href="#cele-star" class="cspark cs1" x="141" y="17" width="18" height="18" style="color:#ffffff"/><use href="#cele-star" class="cspark cs2" x="229" y="53" width="18" height="18" style="color:#FFD9A0"/><use href="#cele-star" class="cspark cs3" x="265" y="141" width="18" height="18" style="color:#ffffff"/><use href="#cele-star" class="cspark cs4" x="229" y="229" width="18" height="18" style="color:#FFD9A0"/><use href="#cele-star" class="cspark cs1" x="141" y="265" width="18" height="18" style="color:#ffffff"/><use href="#cele-star" class="cspark cs2" x="53" y="229" width="18" height="18" style="color:#FFD9A0"/><use href="#cele-star" class="cspark cs3" x="17" y="141" width="18" height="18" style="color:#ffffff"/><use href="#cele-star" class="cspark cs4" x="53" y="53" width="18" height="18" style="color:#FFD9A0"/></g>
+        <use href="#cele-note" class="burst bu1" x="140" y="120" width="22" height="28" style="color:#F5A623;--dx:-96px;--dy:-80px;--r:-22deg"/>
+        <use href="#cele-note" class="burst bu2" x="140" y="120" width="22" height="28" style="color:#ffffff;--dx:-40px;--dy:-118px;--r:10deg"/>
+        <use href="#cele-note" class="burst bu3" x="140" y="120" width="22" height="28" style="color:#7ED321;--dx:42px;--dy:-120px;--r:-8deg"/>
+        <use href="#cele-note" class="burst bu4" x="140" y="120" width="22" height="28" style="color:#4dd9ff;--dx:98px;--dy:-78px;--r:16deg"/>
+        <use href="#cele-note" class="burst bu5" x="140" y="120" width="22" height="28" style="color:#ff5fa2;--dx:0px;--dy:-132px;--r:-14deg"/>
+        <g class="ribbon">
+          <path class="rec-ribbon" d="M40 262 L260 262 L246 284 L260 306 L40 306 L54 284 Z"/>
+          <text id="record-ribbon" x="150" y="291" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">Best DJ ever!</text>
+        </g>
+        <rect class="conf c1" x="20" y="0" width="9" height="6" fill="#F5A623"/>
+        <rect class="conf c2" x="60" y="0" width="9" height="6" fill="#fff"/>
+        <rect class="conf c3" x="100" y="0" width="9" height="6" fill="#E74C3C"/>
+        <rect class="conf c4" x="140" y="0" width="9" height="6" fill="#2ECC71"/>
+        <rect class="conf c5" x="180" y="0" width="9" height="6" fill="#FFD9A0"/>
+        <rect class="conf c6" x="220" y="0" width="9" height="6" fill="#4A90E2"/>
+        <rect class="conf c7" x="260" y="0" width="9" height="6" fill="#fff"/>
+        <rect class="conf c8" x="80" y="0" width="9" height="6" fill="#9B59B6"/>
+        <rect class="conf c9" x="200" y="0" width="9" height="6" fill="#F5A623"/>
+        <rect class="conf c10" x="120" y="0" width="9" height="6" fill="#E74C3C"/>
+      </svg>
+      <div class="cele-bar">
+        <span class="cele-wrap">That's a wrap!</span>
+      </div>
+    </div>
+  </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
