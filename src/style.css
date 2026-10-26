@@ -1,3 +1,6 @@
+/* index.html hides the page until this file has loaded */
+body { visibility: visible !important; }
+
 * {
   box-sizing: border-box;
   margin: 0;

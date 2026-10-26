@@ -99,8 +99,9 @@ export async function playFanfare(kind: "party" | "bronze" | "silver" | "gold"):
 // The song plays while he DJs; the button stops it like a record being
 // switched off (it slows right down). Fetched when the app opens so it's ready.
 let partyBytes: Promise<ArrayBuffer | null> | null = null;
-export function preloadPartySong(): void {
+export function preloadPartySong(): Promise<unknown> {
   partyBytes ??= fetch(partySongUrl).then(r => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+  return partyBytes;
 }
 let partyBuf: AudioBuffer | null = null;
 let partyGain = 1;

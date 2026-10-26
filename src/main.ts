@@ -1130,9 +1130,12 @@ window.setInterval(() => {
   if (++onAirTicks % 60 === 0) void sync().then(popMedals); // keep the shared total up to date
 }, 1000);
 
-// ?demo=party / bronze / silver / gold shows the end-of-show celebration straight away.
+// ?demo=party / bronze / silver / gold shows the end-of-show celebration on the
+// first tap ("Tap to start!") — browsers only allow its music after a tap.
 const demo = new URLSearchParams(location.search).get("demo");
-if (demo === "party" || demo === "bronze" || demo === "silver" || demo === "gold") previewCelebration(demo);
+if (demo === "party" || demo === "bronze" || demo === "silver" || demo === "gold") {
+  document.addEventListener("click", () => { void unlockAudio(); previewCelebration(demo); }, { once: true, capture: true });
+}
 
 watchForUpdates(() => starting || !!current?.running || recorder.recording || !recorderModal.classList.contains("hidden"));
 runSplash();

@@ -11,7 +11,7 @@ air while the three dancers dance and his party song plays (`src/assets/party-mu
 hits a big red button — the song winds down, the disco ball goes off, the dancers say "?" and walk
 out of the door, and the picture closes in a circle on him (about 23 s). The story's timing is
 `STORY` in `src/celebrate.ts`; the moves are the "v8" section of `src/style.css`. Records still get
-their own 40-second scene. `?demo=party` plays it straight away.
+their own 40-second scene. `?demo=party` plays it on the first tap (browsers only allow the music after a tap).
 - Uses /djraf6/'s Spotify login (same web address), so there's no new redirect address to add.
   Its own show, recordings and settings (`djraf7_*`); records carry over from /djraf6/.
 

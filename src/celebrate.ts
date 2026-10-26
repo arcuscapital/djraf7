@@ -110,7 +110,13 @@ let story: number[] = [];
 let song: PartySong | null = null;
 
 for (const [id, url] of Object.entries(RAF)) $(id).setAttribute("href", url);
-preloadPartySong();
+// The party only starts once his picture and his song are here, so he never
+// appears a piece at a time (at most a few seconds' wait on a slow connection).
+const partyReady = Promise.all([
+  ...Object.values(RAF).map(url => { const img = new Image(); img.src = url; return img.decode().catch(() => {}); }),
+  preloadPartySong()
+]);
+let showing = 0; // a newer show (or a close) cancels one that's still waiting
 
 function stopStory(): void {
   for (const t of story) clearTimeout(t);
@@ -134,6 +140,13 @@ function playStory(): void {
 
 function showCelebration(c: Celebration, autoClose: boolean): void {
   stopStory();
+  const mine = ++showing;
+  if (c.kind === "party") {
+    void Promise.race([partyReady, new Promise(r => setTimeout(r, 5000))]).then(() => { if (mine === showing) reveal(c, autoClose); });
+  } else reveal(c, autoClose);
+}
+
+function reveal(c: Celebration, autoClose: boolean): void {
   $("scene-party").classList.toggle("hidden", c.kind !== "party");
   const rec = $("scene-record");
   rec.classList.toggle("hidden", c.kind === "party");
@@ -154,6 +167,7 @@ function showCelebration(c: Celebration, autoClose: boolean): void {
 
 export function closeCelebration(immediately = false): void {
   if (timer !== null) { clearTimeout(timer); timer = null; }
+  showing++;
   stopStory();
   if (root.classList.contains("hidden")) return;
   if (immediately) { root.classList.add("hidden"); return; }
